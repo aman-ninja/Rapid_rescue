@@ -3,10 +3,10 @@ import 'package:geocoding/geocoding.dart';
 // import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rapid_rescue/Models/earthquake.dart';
-import 'package:rapid_rescue/safe_screen.dart';
+import 'package:rapid_rescue/screens/safe_screen.dart';
 import 'package:rapid_rescue/screens/loading.dart';
 import 'package:rapid_rescue/screens/safe_screen.dart';
-import 'package:rapid_rescue/unsafe_screen.dart';
+import 'package:rapid_rescue/screens/unsafe_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -55,7 +55,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     if(_loading)return LoadingScreen();
     else if(_isSafe)return safe_screen();
-    else return unsafe_screen();
+    else return unsafe_screen(earthQuake: _earthQuake,);
     // return Scaffold(
     //   appBar: AppBar(
     //     title: Text("DASHBOARD"),

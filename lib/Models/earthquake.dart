@@ -50,7 +50,7 @@ class EarthQuake{
     // SplayTreeMap<double,EarthQuake> ordered = new SplayTreeMap((a,b)=>a.compareTo(b));
     for(int i = 0;i<count;i++){
       EarthQuake earthQuake = EarthQuake.fromJSon(data['features'][i]);
-      double distance =  HaversineDistance().haversine(new Location(latitude!, longitude!), new Location(earthQuake.latitude!, earthQuake.longitude!), Unit.KM);
+      double distance =  HaversineDistance().haversine(new Location(-29.3119, -67.7939), new Location(earthQuake.latitude!, earthQuake.longitude!), Unit.KM);
       double radius = exp(earthQuake.magnitude!/1.01-0.13);
       // double radius = 1000;
       if(distance<radius)return earthQuake;

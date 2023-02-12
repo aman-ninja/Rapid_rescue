@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:rapid_rescue/Weather.dart';
+import 'package:rapid_rescue/Models/earthquake.dart';
+import 'package:rapid_rescue/screens/contact.dart';
+
+import 'Weather.dart';
 
 class unsafe_screen extends StatefulWidget {
-  const unsafe_screen({super.key});
+  final EarthQuake? earthQuake;
+  const unsafe_screen({super.key,required this.earthQuake});
   @override
   State<StatefulWidget> createState()=> _unsafe_screen();
 
@@ -65,21 +69,46 @@ class _unsafe_screen extends State<unsafe_screen> {
                   ),
                 ),
               ),
-                Expanded(
-                  child: Container(
-                      color: Colors.white,
-                      child: GestureDetector(
-                          child: Text(
-                              'Get weather info'
-                          ),
+              // Expanded(
+              //   child: Container(
+              //     child: Padding(
+              //       padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
+              //       child: Text(
+              //         widget.earthQuake!.magnitude.toString(),
+              //         style: TextStyle(
+              //           fontSize: 20.0,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              Expanded(
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(60.0, 60.0, 60.0, 60.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red.withOpacity(0.4),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: Center(
+                        child: GestureDetector(
                           onTap: (){
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => const weather()),
-                            );
-                          }
-                      )
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ContactScreen()));
+                          },
+                          child: Text(
+                            'Contact',
+                            style: TextStyle(
+                              fontSize: 25.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                )
+                ),
+              ),
+
             ],
       ),
     );
