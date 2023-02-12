@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rapid_rescue/location.dart';
-import 'package:rapid_rescue/unsafe_screen.dart';
-import 'safe_screen.dart';
+import 'package:rapid_rescue/screens/unsafe_screen.dart';
+import 'screens/safe_screen.dart';
 import 'location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rapid_rescue/dashboard.dart';
