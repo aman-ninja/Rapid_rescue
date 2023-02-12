@@ -10,7 +10,6 @@ import 'package:rapid_rescue/screens/unsafe_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
-
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
@@ -54,7 +53,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     if(_loading)return LoadingScreen();
-    else if(_isSafe)return safe_screen();
+    else if(_isSafe)return safe_screen(position: _currentPosition,);
     else return unsafe_screen(earthQuake: _earthQuake,);
     // return Scaffold(
     //   appBar: AppBar(

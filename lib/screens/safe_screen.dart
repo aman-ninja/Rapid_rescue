@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:rapid_rescue/location.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:rapid_rescue/Weather.dart';
-
+import 'package:rapid_rescue/dashboard.dart';
 import 'Weather.dart';
 
 class safe_screen extends StatefulWidget {
-  const safe_screen({super.key});
+  Position? position;
+  safe_screen({required this.position});
   @override
-  State<StatefulWidget> createState()=> _safe_screen();
-
+  State<StatefulWidget> createState()=> _safe_screen(position: position);
 }
 class _safe_screen extends State<safe_screen> {
+  Position? position;
+  _safe_screen({this.position});
   @override
-  void initState() {
-    // TODO: implement initState
-    // super.initState();
-    // while(true) _updateSize();
+  void initState(){
+    print(position!.latitude);
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -71,7 +76,15 @@ class _safe_screen extends State<safe_screen> {
                   ),
                   child: Center(
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () async{
+                        setState(() {
+                          // double? lat = position!.latitude;
+                          // double? lon = position!.longitude;
+                        });
+                        // List<String> numbers = await getStringValuesSF();
+                        // if(numbers!=null && !numbers.isEmpty){
+                          await sendSMS(message: "I felt tremors, my location is "+"{"+position!.latitude.toString()+" , "+position!.longitude.toString()+ "} . Please respond to the situation ASAP.", recipients: ['112','108','+919711077372']);
+                        // }
                       },
                       child: Text(
                         'Felt Tremors?',
